@@ -1,0 +1,14 @@
+{
+  "name": "mi-sitio-html",
+  "version": "1.0.0",
+  "description": "Mini-sitio web HTML5 con tests automatizados. Starter para la Sesión 2.",
+  "private": true,
+  "scripts": {
+    "test": "node tests/grader.test.js",
+    "test:watch": "node --watch tests/grader.test.js",
+    "serve": "python3 -m http.server 8080"
+  },
+  "keywords": ["html", "html5", "static-site"],
+  "author": "",
+  "license": "MIT"
+}
