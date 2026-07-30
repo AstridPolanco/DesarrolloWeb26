@@ -9,7 +9,6 @@
 </head>
 <body>
 
-  <!-- TODO: header con navegacion a las otras 3 paginas -->
   <header>
     <h1>Mi Sitio de Anime</h1>
     <nav>
@@ -32,10 +31,9 @@
       </figure>
       <p>Un espacio dedicado a tres de los animes más icónicos: Naruto, One Piece y Attack on Titan.</p>
 
-      <!-- TODO: usa <dialog> + un boton con command/commandfor (Invoker Commands API) -->
       <dialog id="bienvenida">
-        <h3>Hola!</h3>
-        <p>Esto es un dialog modal nativo.</p>
+        <h3>Bienvenido!</h3>
+        <p>Este sitio recopila mis tres animes favoritos: Naruto, One Piece y Attack on Titan. Usa el menú de arriba para explorar cada uno.</p>
         <form method="dialog">
           <button>Cerrar</button>
         </form>
@@ -44,14 +42,17 @@
         Abrir dialog
       </button>
 
-      <!-- TODO: usa popover para un menu o tooltip -->
       <button popovertarget="menu-ayuda">?</button>
       <div id="menu-ayuda" popover>
         <h4>Ayuda</h4>
-        <p>Contenido del popover...</p>
+        <p>Navega usando el menú superior. En cada página de anime encontrarás personajes, datos y un quiz interactivo.</p>
       </div>
 
-      <!-- TODO: formulario con al menos 3 inputs (text, email, etc.) -->
+      <button popovertarget="dato-random">Dato curioso</button>
+      <div id="dato-random" popover>
+        <p>Naruto, One Piece y Attack on Titan comparten el mismo origen en historias cortas o prototipos (one-shots) previos que sus autores crearon antes de lanzar el manga definitivo.</p>
+      </div>
+
       <form action="#" method="POST">
         <label for="nombre">Nombre:</label>
         <input id="nombre" type="text" name="nombre" required minlength="3">
@@ -66,7 +67,23 @@
       </form>
     </article>
 
-    <!-- TODO: usa <aside> para contenido lateral -->
+    <aside>
+    <h3>Si te gustó esto, prueba también</h3>
+    <ul>
+      <li>Demon Slayer</li>
+      <li>My Hero Academia</li>
+      <li>Jujutsu Kaisen</li>
+    </ul>
+    <p>Otros animes shonen populares con temáticas similares de acción y crecimiento personal.</p>
+    </aside>
+    
+    <aside>
+    <h3>Más información</h3>
+    <p>Si quieres profundizar en el mundo del anime, puedes visitar
+      <a href="https://myanimelist.net" target="_blank" rel="noopener noreferrer">MyAnimeList</a>,
+      una de las bases de datos más completas sobre anime y manga.
+    </p>
+  </aside>
   </main>
 
   <footer>

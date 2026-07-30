@@ -33,11 +33,31 @@
     </article>
     <section>
       <h3>Personajes principales</h3>
-      <ul>
-        <li>Eren Yeager</li>
-        <li>Mikasa Ackerman</li>
-        <li>Armin Arlert</li>
-        <li>Levi Ackerman</li>
+      <ul class="personajes">
+        <li>
+          <button popovertarget="pop-eren">Eren Yeager</button>
+          <div id="pop-eren" popover>
+            <p>Puede transformarse en el Titán de Ataque tras heredar ese poder de su padre.</p>
+          </div>
+        </li>
+        <li>
+          <button popovertarget="pop-mikasa">Mikasa Ackerman</button>
+          <div id="pop-mikasa" popover>
+            <p>Considerada una de las soldados más fuertes gracias a la sangre del clan Ackerman.</p>
+          </div>
+        </li>
+        <li>
+          <button popovertarget="pop-armin">Armin Arlert</button>
+          <div id="pop-armin" popover>
+            <p>Estratega del grupo; su inteligencia ha salvado a la humanidad varias veces.</p>
+          </div>
+        </li>
+        <li>
+          <button popovertarget="pop-levi">Levi Ackerman</button>
+          <div id="pop-levi" popover>
+            <p>Conocido como "el soldado más fuerte de la humanidad".</p>
+          </div>
+        </li>
       </ul>
     </section>
 
@@ -70,6 +90,47 @@
           </tr>
         </tbody>
       </table>
+    </section>
+
+    <section>
+      <h3>Ponte a prueba: Quiz de Attack on Titan</h3>
+      <form id="quiz-aot">
+        <fieldset>
+          <legend>¿En qué se transforma Eren?</legend>
+          <label>
+            <input type="radio" name="p1" value="correcta" required>
+            El Titán de Ataque
+          </label>
+          <label>
+            <input type="radio" name="p1" value="incorrecta">
+            El Titán Colosal
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>¿A qué clan pertenece Mikasa?</legend>
+          <label>
+            <input type="radio" name="p2" value="correcta" required>
+            Ackerman
+          </label>
+          <label>
+            <input type="radio" name="p2" value="incorrecta">
+            Reiss
+          </label>
+        </fieldset>
+
+        <button type="submit" command="show-modal" commandfor="resultado-quiz-aot">
+          Enviar respuestas
+        </button>
+      </form>
+
+      <dialog id="resultado-quiz-aot">
+        <h3>¡Gracias por participar!</h3>
+        <p>Si marcaste "El Titán de Ataque" y "Ackerman", ¡tienes ambas correctas!</p>
+        <form method="dialog">
+          <button>Cerrar</button>
+        </form>
+      </dialog>
     </section>
   </main>
 

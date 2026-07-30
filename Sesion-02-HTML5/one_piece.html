@@ -32,14 +32,34 @@
       </figure>
       <p>One Piece es un famoso manga y anime creado por Eiichiro Oda que narra las aventuras de Monkey D. Luffy y su tripulación, quienes buscan un legendario tesoro para convertirse en el rey de los piratas.</p>
     </article>
+
     <section>
       <h3>Personajes principales</h3>
-      <ul>
-        <li>Monkey D. Luffy</li>
-        <li>Roronoa Zoro</li>
-        <li>Nami</li>
-        <li>Usopp</li>
-        <li>Vinsmoke Sanji</li>
+      <ul class="personajes">
+        <li>
+          <button popovertarget="pop-luffy">Monkey D. Luffy</button>
+          <div id="pop-luffy" popover>
+            <p>Comió la fruta Gomu Gomu y su cuerpo es elástico como la goma.</p>
+          </div>
+        </li>
+        <li>
+          <button popovertarget="pop-zoro">Roronoa Zoro</button>
+          <div id="pop-zoro" popover>
+            <p>Espadachín que pelea con tres espadas a la vez, Wado Ichimonji, Sandai Kitetsu y Enma.</p>
+          </div>
+        </li>
+        <li>
+          <button popovertarget="pop-nami">Nami</button>
+          <div id="pop-nami" popover>
+            <p>Navegante de la tripulación; sueña con dibujar un mapa del mundo entero.</p>
+          </div>
+        </li>
+        <li>
+          <button popovertarget="pop-sanji">Vinsmoke Sanji</button>
+          <div id="pop-sanji" popover>
+            <p>Es el cocinero; pelea únicamente usando patadas para proteger sus manos.</p>
+          </div>
+        </li>
       </ul>
     </section>
 
@@ -72,6 +92,47 @@
           </tr>
         </tbody>
       </table>
+    </section>
+
+    <section>
+      <h3>Ponte a prueba: Quiz de One Piece</h3>
+      <form id="quiz-one-piece">
+        <fieldset>
+          <legend>¿Qué fruta del diablo comió Luffy?</legend>
+          <label>
+            <input type="radio" name="p1" value="correcta" required>
+            Gomu Gomu
+          </label>
+          <label>
+            <input type="radio" name="p1" value="incorrecta">
+            Mera Mera
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>¿Con cuántas espadas pelea Zoro?</legend>
+          <label>
+            <input type="radio" name="p2" value="correcta" required>
+            Tres
+          </label>
+          <label>
+            <input type="radio" name="p2" value="incorrecta">
+            Una
+          </label>
+        </fieldset>
+
+        <button type="submit" command="show-modal" commandfor="resultado-quiz-op">
+          Enviar respuestas
+        </button>
+      </form>
+
+      <dialog id="resultado-quiz-op">
+        <h3>¡Gracias por participar!</h3>
+        <p>Si marcaste "Gomu Gomu no Mi" y "Tres", ¡tienes ambas correctas!</p>
+        <form method="dialog">
+          <button>Cerrar</button>
+        </form>
+      </dialog>
     </section>
   </main>
 
