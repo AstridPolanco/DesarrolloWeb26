@@ -95,45 +95,38 @@
     </section>
 
     <section>
-      <h3>Ponte a prueba: Quiz de One Piece</h3>
-      <form id="quiz-one-piece">
-        <fieldset>
-          <legend>¿Qué fruta del diablo comió Luffy?</legend>
-          <label>
-            <input type="radio" name="p1" value="correcta" required>
-            Gomu Gomu
-          </label>
-          <label>
-            <input type="radio" name="p1" value="incorrecta">
-            Mera Mera
-          </label>
-        </fieldset>
+  <h3>¿Cuál es tu personaje favorito?</h3>
+  <form id="encuesta-op">
+    <label>
+      <input type="radio" name="favorito" value="Luffy" required>
+      Monkey D. Luffy
+    </label>
+    <label>
+      <input type="radio" name="favorito" value="Zoro">
+      Roronoa Zoro
+    </label>
+    <label>
+      <input type="radio" name="favorito" value="Nami">
+      Nami
+    </label>
+    <label>
+      <input type="radio" name="favorito" value="Sanji">
+      Sanji
+    </label>
 
-        <fieldset>
-          <legend>¿Con cuántas espadas pelea Zoro?</legend>
-          <label>
-            <input type="radio" name="p2" value="correcta" required>
-            Tres
-          </label>
-          <label>
-            <input type="radio" name="p2" value="incorrecta">
-            Una
-          </label>
-        </fieldset>
+    <button type="button" command="show-modal" commandfor="gracias-op">
+      Votar
+    </button>
+  </form>
 
-        <button type="submit" command="show-modal" commandfor="resultado-quiz-op">
-          Enviar respuestas
-        </button>
-      </form>
-
-      <dialog id="resultado-quiz-op">
-        <h3>¡Gracias por participar!</h3>
-        <p>Si marcaste "Gomu Gomu no Mi" y "Tres", ¡tienes ambas correctas!</p>
-        <form method="dialog">
-          <button>Cerrar</button>
-        </form>
-      </dialog>
-    </section>
+  <dialog id="gracias-op">
+    <h3>¡Gracias por tu voto!</h3>
+    <p>Cada miembro de la tripulación del Sombrero de Paja tiene su propia historia.</p>
+    <form method="dialog">
+      <button>Cerrar</button>
+    </form>
+  </dialog>
+</section>
   </main>
 
   <footer>

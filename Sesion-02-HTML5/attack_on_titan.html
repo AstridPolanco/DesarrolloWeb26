@@ -93,45 +93,38 @@
     </section>
 
     <section>
-      <h3>Ponte a prueba: Quiz de Attack on Titan</h3>
-      <form id="quiz-aot">
-        <fieldset>
-          <legend>¿En qué se transforma Eren?</legend>
-          <label>
-            <input type="radio" name="p1" value="correcta" required>
-            El Titán de Ataque
-          </label>
-          <label>
-            <input type="radio" name="p1" value="incorrecta">
-            El Titán Colosal
-          </label>
-        </fieldset>
+  <h3>¿Cuál es tu personaje favorito?</h3>
+  <form id="encuesta-aot">
+    <label>
+      <input type="radio" name="favorito" value="Eren" required>
+      Eren Yeager
+    </label>
+    <label>
+      <input type="radio" name="favorito" value="Mikasa">
+      Mikasa Ackerman
+    </label>
+    <label>
+      <input type="radio" name="favorito" value="Armin">
+      Armin Arlert
+    </label>
+    <label>
+      <input type="radio" name="favorito" value="Levi">
+      Levi Ackerman
+    </label>
 
-        <fieldset>
-          <legend>¿A qué clan pertenece Mikasa?</legend>
-          <label>
-            <input type="radio" name="p2" value="correcta" required>
-            Ackerman
-          </label>
-          <label>
-            <input type="radio" name="p2" value="incorrecta">
-            Reiss
-          </label>
-        </fieldset>
+    <button type="button" command="show-modal" commandfor="gracias-aot">
+      Votar
+    </button>
+  </form>
 
-        <button type="submit" command="show-modal" commandfor="resultado-quiz-aot">
-          Enviar respuestas
-        </button>
-      </form>
-
-      <dialog id="resultado-quiz-aot">
-        <h3>¡Gracias por participar!</h3>
-        <p>Si marcaste "El Titán de Ataque" y "Ackerman", ¡tienes ambas correctas!</p>
-        <form method="dialog">
-          <button>Cerrar</button>
-        </form>
-      </dialog>
-    </section>
+  <dialog id="gracias-aot">
+    <h3>¡Gracias por tu voto!</h3>
+    <p>Cada personaje de Attack on Titan ha marcado la historia a su manera.</p>
+    <form method="dialog">
+      <button>Cerrar</button>
+    </form>
+  </dialog>
+</section>
   </main>
 
   <footer>

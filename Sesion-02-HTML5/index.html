@@ -26,7 +26,7 @@
       <h2>Bienvenido a un recorrido por mis animes favoritos</h2>
 
        <figure>
-        <img src="img/logo.png" alt="Logo del sitio" width="150" height="150" loading="lazy">
+        <img src="img/logo.png" alt="Logo del sitio" width="450" height="450" loading="lazy">
         <figcaption>Logo de anime.</figcaption>
       </figure>
       <p>Un espacio dedicado a tres de los animes más icónicos: Naruto, One Piece y Attack on Titan.</p>
@@ -42,7 +42,7 @@
         Abrir dialog
       </button>
 
-      <button popovertarget="menu-ayuda">?</button>
+      <button popovertarget="menu-ayuda" aria-label="Abrir ayuda">?</button>
       <div id="menu-ayuda" popover>
         <h4>Ayuda</h4>
         <p>Navega usando el menú superior. En cada página de anime encontrarás personajes, datos y un quiz interactivo.</p>
@@ -52,8 +52,29 @@
       <div id="dato-random" popover>
         <p>Naruto, One Piece y Attack on Titan comparten el mismo origen en historias cortas o prototipos (one-shots) previos que sus autores crearon antes de lanzar el manga definitivo.</p>
       </div>
+    </article>
 
-      <form action="#" method="POST">
+    <aside>
+      <div>
+        <h3>Si te gustó esto, prueba también</h3>
+        <ul>
+          <li>Demon Slayer</li>
+          <li>My Hero Academia</li>
+          <li>Jujutsu Kaisen</li>
+        </ul>
+        <p>Otros animes shonen populares con temáticas similares de acción y crecimiento personal.</p>
+      </div>
+      <div>
+        <h3>Más información</h3>
+        <p>Si quieres profundizar en el mundo del anime, puedes visitar
+          <a href="https://myanimelist.net" target="_blank" rel="noopener noreferrer">MyAnimeList</a>,
+          una de las bases de datos más completas sobre anime y manga.
+        </p>
+      </div>
+  </aside>
+
+  <form action="#" method="POST">
+    <p>Déjanos saber tu opinión.</p>
         <label for="nombre">Nombre:</label>
         <input id="nombre" type="text" name="nombre" required minlength="3">
 
@@ -65,25 +86,6 @@
 
         <button type="submit">Enviar</button>
       </form>
-    </article>
-
-    <aside>
-    <h3>Si te gustó esto, prueba también</h3>
-    <ul>
-      <li>Demon Slayer</li>
-      <li>My Hero Academia</li>
-      <li>Jujutsu Kaisen</li>
-    </ul>
-    <p>Otros animes shonen populares con temáticas similares de acción y crecimiento personal.</p>
-    </aside>
-    
-    <aside>
-    <h3>Más información</h3>
-    <p>Si quieres profundizar en el mundo del anime, puedes visitar
-      <a href="https://myanimelist.net" target="_blank" rel="noopener noreferrer">MyAnimeList</a>,
-      una de las bases de datos más completas sobre anime y manga.
-    </p>
-  </aside>
   </main>
 
   <footer>

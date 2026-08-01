@@ -37,17 +37,17 @@
     <section>
       <h3>Personajes Principales</h3>
       <ul class="personajes">
-        <li><button popovertarget="pop-naruto"><Naruto Uzumaki</button>
+        <li><button popovertarget="pop-naruto">Naruto Uzumaki</button>
           <div id="pop-naruto" popover>
             <p>Naruto dominó un jutsu prohibido (Clon de Sombra) antes de poder pasar la escuela ninja básica</p>
           </div>
         </li>
-        <li><button popovertarget="pop-sasuke"><Sasuke Uchiha</button>
+        <li><button popovertarget="pop-sasuke">Sasuke Uchiha</button>
           <div id="pop-sasuke" popover>
             <p>Sasuke Uchiha despertó su Sharingan a los 7 años de edad</p>
           </div>
         </li>
-        <li><button popovertarget="pop-sakura"><Sakura Haruno</button>
+        <li><button popovertarget="pop-sakura">Sakura Haruno</button>
           <div id="pop-sakura" popover>
             <p>Discípula de Tsunade, se convierte en una de las mejores ninjas médicas</p>
           </div>
@@ -90,47 +90,40 @@
     </tbody>
   </table>
 </section>
+
 <section>
-  <h3>Ponte a prueba: Quiz de Naruto</h3>
-  <form id="quiz-naruto">
-    <fieldset>
-      <legend>¿Cuál es el sueño de Naruto?</legend>
-      <label>
-        <input type="radio" name="p1" value="correcta" required>
-        Convertirse en Hokage
-      </label>
-      <label>
-        <input type="radio" name="p1" value="incorrecta">
-        Convertirse en pirata
-      </label>
-    </fieldset>
+  <h3>¿Cuál es tu personaje favorito?</h3>
+  <form id="encuesta-naruto">
+    <label>
+      <input type="radio" name="favorito" value="Naruto" required>
+      Naruto Uzumaki
+    </label>
+    <label>
+      <input type="radio" name="favorito" value="Sasuke">
+      Sasuke Uchiha
+    </label>
+    <label>
+      <input type="radio" name="favorito" value="Sakura">
+      Sakura Haruno
+    </label>
+    <label>
+      <input type="radio" name="favorito" value="Kakashi">
+      Kakashi Hatake
+    </label>
 
-    <fieldset>
-      <legend>¿Cómo se llama el clan de Sasuke?</legend>
-      <label>
-        <input type="radio" name="p2" value="correcta" required>
-        Uchiha
-      </label>
-      <label>
-        <input type="radio" name="p2" value="incorrecta">
-        Hyuga
-      </label>
-    </fieldset>
-
-    <button type="submit" command="show-modal" commandfor="resultado-quiz">
-      Enviar respuestas
+    <button type="button" command="show-modal" commandfor="gracias-naruto">
+      Votar
     </button>
   </form>
 
-  <dialog id="resultado-quiz">
-    <h3>¡Gracias por participar!</h3>
-    <p>Revisa tus respuestas: si marcaste "Hokage" y "Uchiha", ¡las tienes correctas!</p>
+  <dialog id="gracias-naruto">
+    <h3>¡Gracias por tu voto!</h3>
+    <p>Cada personaje de Naruto tiene su propia historia y admiradores.</p>
     <form method="dialog">
       <button>Cerrar</button>
     </form>
   </dialog>
 </section>
-
   </main>
 
   <footer>
