@@ -30,11 +30,19 @@ h2 {
 
 .galeria {
     margin-bottom: 45px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 26px;
+}
+
+@media (min-width: 1024px) {
+    .galeria {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 /* TODO: Estilo de cada tarjeta de producto */
 .producto {
-    margin-bottom: 26px;
     background-color: aliceblue;
     border: 1px solid #fafafa;
     border-radius: 10px;
@@ -84,10 +92,32 @@ h2 {
 }
 
 /* TODO: To-Do List */
-/* - Lista sin marcadores (list-style: none) */
-/* - Checkbox con label accesible */
-/* - Tareas alternadas con color de fondo (zebra striping) */
+.tareas {
+    list-style: none;
+}
 
+.tarea {
+    padding: 14px, 18px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.tarea:nth-child(even) {
+    background-color: darkseagreen;
+}
+
+.tarea input[type="checkbox"] {
+    accent-color: darkcyan;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+.tarea label {
+    font-size: 1rem;
+    cursor: pointer;
+}
 /* TODO: Diseño responsivo */
 /* - Usar @media queries para cambiar entre mobile y desktop */
 /* - La galería debe ser responsiva usando Grid + media queries */
