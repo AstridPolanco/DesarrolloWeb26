@@ -1,28 +1,9 @@
-/**
- * Servidor HTTP con Node.js — Tarea Sesión 5
- * Universidad Mariano Gálvez de Guatemala · Desarrollo Web
- *
- * Implementa las funciones marcadas con TODO para que los tests pasen.
- * No cambies los nombres exportados ni su firma.
- *
- * Temas de la sesión aplicados aquí:
- *   - process.argv            → parsearArgumentos
- *   - variables de entorno    → obtenerConfig
- *   - módulo os               → infoSistema
- *   - EventEmitter            → crearLogger
- *   - módulo fs/promises      → leerMensajes / agregarMensaje
- *   - módulo http             → crearServidor / iniciarServidor
- */
 
 import http from 'node:http';
 import { EventEmitter } from 'node:events';
 import os from 'node:os';
 import path from 'node:path';
 import fs from 'node:fs/promises';
-
-// =====================================================
-// Utilidades (ya implementadas — no las modifiques)
-// =====================================================
 
 /**
  * Crea un id único para cada mensaje.
