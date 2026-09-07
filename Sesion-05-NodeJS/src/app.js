@@ -4,6 +4,7 @@ import { EventEmitter } from 'node:events';
 import os from 'node:os';
 import path from 'node:path';
 import fs from 'node:fs/promises';
+import { error } from 'node:console';
 
 /**
  * Crea un id único para cada mensaje.
@@ -170,7 +171,73 @@ export async function agregarMensaje(archivoDatos, texto) {
  * @returns {import('node:http').Server}
  */
 export function crearServidor(config = {}) {
-    throw new Error('Not implemented: crearServidor');
+    const {
+        archivoDatos = 'data/mensajes.json',
+        nombreApp = 'mensajes-api',
+        logger = crearLogger(),
+    } = config;
+
+    const server = http.createServer(async (req, res) => {
+        const { method, url} = req;
+        res.setHeader('Content-Type', 'application/json');
+
+        try {
+            if (method === 'GET' && url === '/') {
+                logger.registrar(`GET / -> 200`);
+                res.writeHead(200);
+                res.end(JSON.stringify({
+                    mensaje: `Esta es nuestra API ${nombreApp}`,
+                    hora: new Date().toISOString(),
+                    sistema: infoSistema(),
+                }));
+                return;
+            }
+
+            if (method === 'GET' && url === '/mensajes') {
+                const mensajes = await leerMensajes(archivoDatos);
+                logger.registrar(`GET /mensajes -> 200`);
+                res.writeHead(200);
+                res.end(JSON.stringify(mensajes));
+                return;
+            }
+
+            if (method === 'POST' && url === '/mensajes') {
+                const body = await leerBody(req);
+                let datos;
+                try {
+                    datos = JSON.parse(body);
+                } catch {
+                    datos = {};
+                }
+
+                const nuevo = await agregarMensaje(archivoDatos, datos.texto || '');
+
+                if (!nuevo) {
+                    logger.registrar(`POST /mensajes -> 400 `);
+                    res.writeHead(400);
+                    res.end(JSON.stringify({error: 'El texto es obligatorio'}));
+                    return;
+
+                }
+
+                logger.registrar('POST /mensajes -> 201');
+                res.writeHead(201);
+                res.end(JSON.stringify(nuevo));
+                return;
+            }
+
+            logger.registrar(`${method} ${url} -> 404`);
+            res.writeHead(404);
+            res.end(JSON.stringify({error: 'No se encontro esta ruta'}));
+
+        } catch (error) {
+            logger.registrar(`Error: ${error.message}`);
+            res.writeHead(500);
+            res.end(JSON.stringify({error: 'Error interno en el servidor'}));
+        }
+    });
+        
+        return server;
 }
 
 /**
@@ -181,6 +248,15 @@ export function crearServidor(config = {}) {
  * @returns {import('node:http').Server}
  */
 export function iniciarServidor(config = {}) {
-    throw new Error('Not implemented: iniciarServidor');
+    const logger = config.logger || crearLogger();
+    const puerto = config.puerto || 3000;
+
+    const server = crearServidor({...config, logger});
+
+    server.listen(puerto, () => {
+        logger.registrar(`Servidor en http://localhost:${puerto}`);
+    });
+
+    return server;
 }
 
