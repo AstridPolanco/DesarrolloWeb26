@@ -12,7 +12,6 @@
  *   - Testing con node:test (unitario + integración)           → tests/
  *   - better-sqlite3 (CRUD, transacciones)                     → ./src/db.js
  */
-
 import { createReadStream, createWriteStream } from 'node:fs';
 import { pipeline } from 'node:stream/promises';
 import { Readable } from 'node:stream';
@@ -34,7 +33,6 @@ export const __dirname = dirname(__filename);
 export function generarId() {
     return `r-${Date.now()}-${Math.floor(Math.random() * 100000)}`;
 }
-
 // =====================================================
 // TODO: implementa las siguientes funciones
 // =====================================================
