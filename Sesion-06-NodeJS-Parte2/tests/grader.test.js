@@ -4,7 +4,7 @@ import { existsSync, mkdtempSync, readFileSync } from 'node:fs';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { resolve, dirname, join } from 'node:path';
 import { tmpdir } from 'node:os';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, '..');
@@ -15,9 +15,9 @@ let tmpDir;
 
 before(async () => {
     tmpDir = mkdtempSync(join(tmpdir(), 'dw-s6-'));
-    app = await import(resolve(root, 'src/app.js'));
+    app = await import(pathToFileURL(resolve(root, 'src/app.js')).href);
     // El barrel debe exportar lo mismo que app.js
-    index = await import(resolve(root, 'src/index.js'));
+    index = await import(pathToFileURL(resolve(root, 'src/index.js')).href);
 });
 
 // ===========================================================

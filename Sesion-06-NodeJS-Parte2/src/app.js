@@ -94,7 +94,7 @@ export async function leerLineas(ruta) {
  * @returns {string}
  */
 export function rutaAbsoluta(rutaRelativa) {
-    throw new Error('Not implemented: rutaAbsoluta');
+    return join(__dirname, rutaRelativa);
 }
 
 /**
@@ -106,5 +106,26 @@ export function rutaAbsoluta(rutaRelativa) {
  * @returns {Record<string, string>}
  */
 export function parsearEnv(contenido) {
-    throw new Error('Not implemented: parsearEnv');
+    const resultado = {};
+    const lineas = contenido.split('\n');
+
+    for (const linea of lineas) {
+        const lineaLimpia = linea.trim();
+
+        if (lineaLimpia === '' || lineaLimpia.startsWith('#')) {
+            continue;
+        }
+
+        const indiceIgual = lineaLimpia.indexOf('=');
+        if (indiceIgual === -1) {
+            continue;
+        }
+
+        const clave = lineaLimpia.slice(0, indiceIgual).trim().toUpperCase();
+        const valor = lineaLimpia.slice(indiceIgual + 1).trim();
+
+        resultado[clave] = valor;
+    }
+
+    return resultado;
 }
