@@ -12,11 +12,14 @@
  *   - Testing con node:test (unitario + integración)           → tests/
  *   - better-sqlite3 (CRUD, transacciones)                     → ./src/db.js
  */
-import { createReadStream, createWriteStream } from 'node:fs';
+import { createReadStream, createWriteStream, link } from 'node:fs';
 import { pipeline } from 'node:stream/promises';
-import { Readable } from 'node:stream';
+import { Readable, Transform } from 'node:stream';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { resolve } from 'node:dns';
+import { rejects } from 'node:assert';
+import { error } from 'node:console';
 
 // __dirname y __filename reproducidos con import.meta.url (ES Modules)
 export const __filename = fileURLToPath(import.meta.url);
@@ -33,9 +36,6 @@ export const __dirname = dirname(__filename);
 export function generarId() {
     return `r-${Date.now()}-${Math.floor(Math.random() * 100000)}`;
 }
-// =====================================================
-// TODO: implementa las siguientes funciones
-// =====================================================
 
 /**
  * Componentes y módulos.
@@ -71,7 +71,41 @@ export function generarId() {
  * @returns {Promise<number>} cantidad de líneas que coincidieron (0 si no hay).
  */
 export async function filtrarLogs(origen, destino, texto) {
-    throw new Error('Not implemented: filtrarLogs');
+    let contador = 0;
+    let sobra = '';
+
+    const transformador = new Transform( {
+        transform(chunk, encoding, callback) {
+            sobra += chunk.toString();
+            const lineas = sobra.split('\n');
+            sobra = lineas.pop();
+
+            let salida = '';
+            for (const linea of lineas) {
+                if (linea.includes(texto)) {
+                    salida += linea + '\n';
+                    contador++;
+                }
+            }
+
+            callback(null, salida);
+        },
+        flush(callback) {
+            if (sobra.includes(texto)) {
+                contador++;
+                callback(null, sobra + '\n');
+            } else {
+                callback();
+            }
+        },
+    });
+
+    await pipeline(
+        createReadStream(origen, 'utf-8'),
+        transformador,
+        createWriteStream(destino)
+    );
+    return contador;
 }
 
 /**
@@ -83,7 +117,23 @@ export async function filtrarLogs(origen, destino, texto) {
  * @returns {Promise<string[]>}
  */
 export async function leerLineas(ruta) {
-    throw new Error('Not implemented: leerLineas');
+    return new Promise((resolve, reject) => {
+        const stream = createReadStream(ruta, 'utf-8');
+        let contenido = '';
+
+        stream.on('data', (chunk) => {
+            contenido += chunk;
+        });
+
+        stream.on('end', () => {
+            const lineas = contenido.split('\n').map((linea) => linea.trim()).filter((linea) => linea !== '');
+            resolve(lineas);
+        });
+
+        stream.on('error', (error) => {
+            reject(error);
+        });
+    });
 }
 
 /**
